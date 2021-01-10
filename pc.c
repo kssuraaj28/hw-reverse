@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	{
 		fprintf(stderr,"Usage: %s stride node_count experiment_count\n",argv[0]);
 		fprintf(stderr,"8 byte loads used. Effective working set is stride*node_count\n");
-		fprintf(stderr,"Only node_count * sizeof(uint64_t) is actually accessed.");
+		fprintf(stderr,"Only node_count * sizeof(uint64_t) is actually accessed\n");
 		exit(-1);
 	}
 
