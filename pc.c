@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <sys/mman.h>
 #include <x86intrin.h>
 
 #include "util.h"
@@ -18,8 +19,13 @@ int main(int argc, char* argv[])
 	int stride = atoi(argv[1]);
 	int node_count = atoi(argv[2]);
 	int experiment_count = atoi(argv[3]);
-
+//TODO: test for incorrectness
+#ifdef HUGE_PAGE 
+	char *test_array = mmap (NULL, REGION_SIZE, PROT_READ|PROT_WRITE, 
+	                  MAP_PRIVATE|MAP_ANONYMOUS|MAP_HUGETLB, -1, (off_t)0);
+#else
 	char* test_array = malloc(REGION_SIZE);
+#endif
 	memset(test_array,'x',REGION_SIZE);  //Forcing OS to give us data.
 
 	uint64_t* perm_array = malloc(node_count * sizeof(uint64_t));
@@ -46,5 +52,9 @@ int main(int argc, char* argv[])
 	uint64_t latency = time_end - time_start;
 	printf("%ld\t%ld\n",latency, latency/(node_count*experiment_count));
 	
+#ifdef HUGE_PAGE
+	munmap(test_array,REGION_SIZE);
+#else
 	free(test_array);
+#endif
 }

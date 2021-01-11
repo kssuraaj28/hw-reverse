@@ -58,5 +58,18 @@ for r in result:
 out_file.close()
 
 #Plotting results
-import matplotlib
+import matplotlib.pyplot as plt 
+from plot import plot
 print("Plotting...") #TODO
+print(result)
+plot(result,figure_name=out_file_name+'.png',label=str(stride))
+#x_axis = [t[0] for t in result]
+#y_axis = [t[1] for t in result]
+#plt.plot(x_axis, y_axis, label = str(stride))
+
+#plt.xlabel('Accessed size (!= Arraysize)')
+#plt.xscale('log')
+#plt.ylabel('Latency (rdtsc ticks)')
+#plt.title('Pointer-chasing microbenchmark')
+#plt.legend()
+#plt.savefig(out_file_name+'.png', dpi=300)
