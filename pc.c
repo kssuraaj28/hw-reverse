@@ -33,13 +33,16 @@ int main(int argc, char* argv[])
 
 	//Storing a pc_linked_list in memory
 	for(int i=0;i<node_count;i++)
-		*(uint64_t*)(test_array+(i*stride)) = perm_array[i]*stride;
+	{
+		uint64_t* ptr = (void*)&test_array[i*stride];
+		*ptr = perm_array[i]*stride;
+	}
 	free(perm_array);
 
 	uint64_t time_start, time_end;
 
 
-	uint64_t offset=0;
+	volatile register uint64_t offset=0;
 	warmup_cpu();
 
 	int junk;

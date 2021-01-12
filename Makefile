@@ -1,3 +1,3 @@
 CC := gcc
-CFLAGS ?= -DHUGE_PAGE
+CFLAGS := $(CFLAGS) -DHUGE_PAGE  -O2
 pc:

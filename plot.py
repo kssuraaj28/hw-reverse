@@ -10,10 +10,11 @@ def plot(data_list,figure_name='output.png',**kwargs):
 	y_axis = [t[1] for t in data_list]
 	plt.plot(x_axis, y_axis, label = kwargs['label'])
 
+	plt.xscale('log',base=2)
 	plt.xlabel(kwargs['xlabel'])
 	plt.ylabel(kwargs['ylabel'])
 	plt.title(kwargs['title'])
-	plt.xscale('log',base=2)
+
 	xtick_range = [64 * (2 ** x) for x in range(21)]
 	xtick_names = ['64 B','128 B','256 B','512 B','1 kB','2 kB','4 kB','8 kB','16 kB','32 kB','64 kB','128 kB','256 kB','512 kB','1 MB','2 MB','4 MB','8 MB','16 MB','32 MB','64 MB'] #for KB
 
@@ -25,6 +26,7 @@ def plot(data_list,figure_name='output.png',**kwargs):
 	)
 	plt.legend()
 	plt.grid()
+	plt.tight_layout()
 	plt.savefig(figure_name, dpi=300)
 
 def main():
