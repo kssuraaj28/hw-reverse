@@ -10,7 +10,7 @@ def plot(data_list,figure_name='output.png',**kwargs):
 	y_axis = [t[1] for t in data_list]
 	plt.plot(x_axis, y_axis, label = kwargs['label'])
 
-	plt.xscale('log',base=2)
+	plt.xscale('log',basex=2)
 	plt.xlabel(kwargs['xlabel'])
 	plt.ylabel(kwargs['ylabel'])
 	plt.title(kwargs['title'])
