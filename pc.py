@@ -46,7 +46,7 @@ while node_count <= max_node_count:
 #Storing results
 res_dir = os.path.join("result",str(stride))
 if not os.path.exists(res_dir):
-	 os.mkdir(res_dir)
+	 os.makedirs(res_dir)
 
 dt_string = dt.now().strftime("%d-%m-%H-%M")
 out_file_name = res_dir+'/'+dt_string
