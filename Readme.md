@@ -11,6 +11,26 @@ Analysis and reverse-engineering of (selected) hardware components in moderns sy
 - `util.h` - Some helpful utilities
 
 
+## Steps For Execution
+1. Download the repository zip file and extract or clone as:-
+```
+    git clone https://github.com/kssuraaj28/hw-reverse.git
+``` 
+2. In the cloned repository folder,type the following command(Linux OS):-
+```
+    sudo sysctl vm.nr_hugepages=512
+```
+3.  Ru the make file using the following command:-
+```
+    make -B
+```
+4. Run the pyhton script as:-
+```
+    python3 pc.py
+```
+5. After execution is finished,reset the hugepages to 0 like:-
+```
+    sudo sysctl vm.nr_hugepages=0
+``` 
 ### TO DO
-- Add code execution steps
 - Add plots from our machines
