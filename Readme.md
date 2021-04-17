@@ -16,13 +16,13 @@ Analysis and reverse-engineering of (selected) hardware components in moderns sy
 ```
     git clone https://github.com/kssuraaj28/hw-reverse.git
 ``` 
-2. In the cloned repository folder,type the following command(Linux OS):-
+2. In the cloned repository folder,type the following command (Linux OS - You need 1GB of free RAM for this):-
 ```
     sudo sysctl vm.nr_hugepages=512
 ```
-3.  Ru the make file using the following command:-
+3.  Run the make file using the following command:-
 ```
-    make -B
+    make
 ```
 4. Run the pyhton script as:-
 ```
