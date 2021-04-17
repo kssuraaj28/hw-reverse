@@ -12,7 +12,7 @@ static inline void swap (uint64_t* t1, uint64_t* t2)
   *t1 = *t2;
   *t2 = temp;
 }
-
+/*Generates a random permutation*/
 int gen_perm(uint64_t* perm_array,uint64_t count)
 {
 	srand(time(NULL));
