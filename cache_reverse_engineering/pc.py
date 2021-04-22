@@ -11,6 +11,7 @@ MAX_ITS = 1024 * 1024
 
 cmd('make pc')
 stride = int(env('stride',64))
+time = str(env('time'))
 max_region_size = int(env('max_region_size',32*1024*1024))
 it_count = int(env('it_count',1024))
 
@@ -44,7 +45,7 @@ while node_count <= max_node_count:
 
 
 #Storing results
-res_dir = os.path.join("result",str(stride))
+res_dir = os.path.join("result", time, str(stride))
 if not os.path.exists(res_dir):
 	 os.makedirs(res_dir)
 
