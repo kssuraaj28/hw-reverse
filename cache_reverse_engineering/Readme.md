@@ -3,7 +3,7 @@
 ## Topic
 Analysis and reverse-engineering of (selected) hardware components in moderns systems and their security implications
 
-## Repo structure 
+## Directory structure 
 
 - `pc.c` - The main pointer chasing code for reverse engineering cache sizes in C language
 - `pc.py` - The runner script in python, to run pc.c with different experimental settings, to get result statistics
