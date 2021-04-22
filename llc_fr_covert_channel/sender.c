@@ -39,9 +39,13 @@ int main()
         // Get a message to send from the user
         printf("< ");
         char text_buf[128];
-        fgets(text_buf, sizeof(text_buf), stdin);
-        char *msg = string_to_binary(text_buf);
+        if(!fgets(text_buf, sizeof(text_buf), stdin)) 
+		{
+			fprintf(stderr,"Cannot read from stream");
+			return 1;
+		}
 
+        char *msg = string_to_binary(text_buf);
 
         size_t msg_len = strlen(msg);
 
