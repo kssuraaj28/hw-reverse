@@ -12,6 +12,7 @@
 #include <string_view>
 #include <tuple>
 #include <x86intrin.h>
+#include <string.h>
 
 static constexpr std::string_view sekret = "This is my secret!";
 
