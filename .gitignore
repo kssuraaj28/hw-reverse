@@ -1,3 +1,6 @@
 result/
 __pycache__/
 *.png
+*.o
+cache
+spectre
