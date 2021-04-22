@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+import os 
+import pandas as pd
+import argparse
+
+
+
+
 
 def plot(data_list,figure_name='output.png',**kwargs):
 	if 'xlabel' not in kwargs: kwargs['xlabel'] = 'Accessed size (!= Arraysize)'
@@ -10,7 +17,7 @@ def plot(data_list,figure_name='output.png',**kwargs):
 	y_axis = [t[1] for t in data_list]
 	plt.plot(x_axis, y_axis, label = kwargs['label'])
 
-	plt.xscale('log',basex=2)
+	plt.xscale('log',base=2)
 	plt.xlabel(kwargs['xlabel'])
 	plt.ylabel(kwargs['ylabel'])
 	plt.title(kwargs['title'])
@@ -30,18 +37,33 @@ def plot(data_list,figure_name='output.png',**kwargs):
 	plt.savefig(figure_name, dpi=300)
 
 def main():
-	from csv import DictReader as csvread
 	from sys import argv
-	if len(argv) < 2:
-		print("Usage file.csv label")
 
-	result = []
-	with open(argv[1], 'r') as f:
-		reader = csvread(f)
-		for row in reader:
-			result.append((int(row['Accessed_size']),int(row['Latency'])))
-	outfilename=argv[1].strip('.csv')+'.png'
-	plot(result,figure_name=outfilename,label=argv[2])
+	time = argv[1]
+
+	if len(argv) < 1:
+		print("Usage time")	
+
+	stride_list = os.listdir('result')
+	stride_list = [int(x) for x in stride_list]
+	stride_list.sort()
+
+	access_size_meta_list = []
+	latency_meta_list = []
+
+	for stride in stride_list:
+		csv_name = os.listdir(os.path.join('result', str(stride)))[0]
+		df_path = os.path.join('result', str(stride), csv_name)
+		df = pd.read_csv(df_path)
+		access_size = df['Accessed_size'].to_list()
+		latency = df['Latency'].to_list()
+		access_size_meta_list.append(access_size)
+		latency_meta_list.append(latency)
+
+	print(access_size_meta_list)
+
+
+	# plot(result,figure_name=outfilename,label=argv[2])
 
 if __name__ == '__main__':
 	main()
