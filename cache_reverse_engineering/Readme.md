@@ -32,5 +32,6 @@ Analysis and reverse-engineering of (selected) hardware components in moderns sy
 ```
     sudo sysctl vm.nr_hugepages=0
 ``` 
-### TO DO
-- Add plots from our machines
+## Results
+
+![plot](images/results.png)

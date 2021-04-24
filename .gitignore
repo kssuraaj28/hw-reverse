@@ -2,5 +2,6 @@ result/
 __pycache__/
 *.png
 *.o
+!results.png
 cache
 spectre
